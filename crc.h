@@ -28,7 +28,7 @@ typedef unsigned short width_t;
  * Initialize the CRC lookup table.  
  * This table is used by crcCompute() to make CRC computation faster.  
  */    
-void crcInit(void);    
+void _crcInit(void);    
     
 /**  
  * Compute the CRC checksum of a binary message block.  
@@ -37,7 +37,7 @@ void crcInit(void);
  * @note This function expects that crcInit() has been called  
  *       first to initialize the CRC lookup table.  
  */    
-void crcCompute(unsigned char * message, unsigned int nBytes, width_t *result);    
+void CalcCRC(unsigned char * message, unsigned int nBytes, width_t *result);    
 
 #ifdef __cplusplus
 }

@@ -69,7 +69,7 @@ static width_t crcTable[256];
  * This table is used by crcCompute() to make CRC computation faster.
  * 优化：从效率上考虑，可以先计算出lookup table，存以常量。
  */    
-void crcInit(void)    
+void _crcInit(void)    
 {    
     width_t remainder;    
     width_t dividend;    
@@ -105,10 +105,14 @@ void crcInit(void)
  *       first to initialize the CRC lookup table.  
  */  
     
-void crcCompute(unsigned char * message, unsigned int nBytes, width_t *result)    
+void CalcCRC(unsigned char * message, unsigned int nBytes, width_t *result)    
 {    
     unsigned int offset;    
     unsigned char byte;    
+	
+	// 初始化CRC常量表
+	_crcInit();
+	
 	// 余数初始化：给CRC寄存器一个初始值.
     width_t remainder = INITIAL_REMAINDER;  
 	
