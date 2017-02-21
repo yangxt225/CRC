@@ -114,8 +114,10 @@ void crcCompute(unsigned char * message, unsigned int nBytes, width_t *result)
 	
     /* Divide the message by the polynomial, a byte at a time. */    
     for( offset = 0; offset < nBytes; offset++)    
-    {    
-        byte = (remainder >> (WIDTH - 8)) ^ message[offset];    
+    {   
+		// remainder 高8bit(1Byte)与message一个字节运算，结果用来检索crcTable
+        byte = (remainder >> (WIDTH - 8)) ^ message[offset];   
+		// 检索结果 与 remainder剩下的位 运算。循环处理所有字节. 
         remainder = crcTable[byte] ^ (remainder << 8);    
     }    
     /* The final remainder is the CRC result. 
