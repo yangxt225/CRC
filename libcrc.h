@@ -37,7 +37,7 @@ void _crcInit(void);
  * @note This function expects that crcInit() has been called  
  *       first to initialize the CRC lookup table.  
  */    
-void CalcCRC(unsigned char * message, unsigned int nBytes, width_t *result);    
+void libCalcCRC(unsigned char * message, unsigned int nBytes, width_t *result);    
 
 #ifdef __cplusplus
 }

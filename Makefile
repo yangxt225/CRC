@@ -13,8 +13,8 @@ main: $(TARGET)
 $(TARGET): crc_test.o
 	$(CC) -o $(TARGET) crc_test.o -L. -lCRC
 
-$(ALIB): crc.o
-	$(AR) $(ARFLAGS) $(ALIB) crc.o
+$(ALIB): libcrc.o
+	$(AR) $(ARFLAGS) $(ALIB) libcrc.o
 
 %.o: %.c
 	$(CC) -c $< $(CLAGS)
