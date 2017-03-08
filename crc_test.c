@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
     int i;  
     unsigned char input[] = "123456789";
 	width_t output;
-	// ¼ÆËãCRC
+	// è®¡ç®—CRC
 	libCalcCRC(input, strlen((char *)input), &output);
 
     printf("Before execute CRC: %s\n", input);  

@@ -1,19 +1,19 @@
 /* http://mdfs.net/Info/Comp/Comms/CRC16.htm
-*  CRCÐ£Ñé£¨Ñ­»·ÈßÓàÐ£Ñé£©ÊÇÊý¾ÝÍ¨Ñ¶ÖÐ×î³£²ÉÓÃµÄÐ£Ñé·½Ê½¡£ÔÚÇ¶ÈëÊ½Èí¼þ¿ª·¢ÖÐ£¬¾­³£ÒªÓÃµ½CRC Ëã·¨¶Ô¸÷ÖÖÊý¾Ý½øÐÐÐ£Ñé
-*  CRCËã·¨ÈË¹¤¼ÆËã£º
-*		CRCÐ£ÑéÒ»°ã²ÉÓÃ¶àÏîÊ½³ý·¨À´¼ÆËãCRCÂë¡£	¸ù¾Ý"Éú³É¶àÏîÊ½"µÄÎ»¿íw£¬°´ÕÕCRCËã·¨µÄÒªÇó£¬¼ÆËãÇ°ÒªÔÚÔ­Ê¼Êý¾ÝºóÌîÉÏW¸ö0 ¡£
+*  CRCæ ¡éªŒï¼ˆå¾ªçŽ¯å†—ä½™æ ¡éªŒï¼‰æ˜¯æ•°æ®é€šè®¯ä¸­æœ€å¸¸é‡‡ç”¨çš„æ ¡éªŒæ–¹å¼ã€‚åœ¨åµŒå…¥å¼è½¯ä»¶å¼€å‘ä¸­ï¼Œç»å¸¸è¦ç”¨åˆ°CRC ç®—æ³•å¯¹å„ç§æ•°æ®è¿›è¡Œæ ¡éªŒ
+*  CRCç®—æ³•äººå·¥è®¡ç®—ï¼š
+*		CRCæ ¡éªŒä¸€èˆ¬é‡‡ç”¨å¤šé¡¹å¼é™¤æ³•æ¥è®¡ç®—CRCç ã€‚	æ ¹æ®"ç”Ÿæˆå¤šé¡¹å¼"çš„ä½å®½wï¼ŒæŒ‰ç…§CRCç®—æ³•çš„è¦æ±‚ï¼Œè®¡ç®—å‰è¦åœ¨åŽŸå§‹æ•°æ®åŽå¡«ä¸ŠWä¸ª0 ã€‚
 *	 
-*	Ïà¹Ø²©ÎÄ²ÎÔÄ£ºhttp://blog.csdn.net/yxtxiaotian/article/details/52149715¡£ 
+*	ç›¸å…³åšæ–‡å‚é˜…ï¼šhttp://blog.csdn.net/yxtxiaotian/article/details/52149715ã€‚ 
 *	
 * ----------------------------------------------------------------------------
-* CRC³£¼ûËã·¨ÃèÊö(±àÂëÊµÏÖ)£º
-*£¨1£©ÉèÖÃCRC¼Ä´æÆ÷£¬²¢¸øÆä¸³ÖµÎªINITIAL_REMAINDER(¡°ÓàÊý³õÊ¼Öµ¡±)£»
-*£¨2£©½«Êý¾ÝµÄµÚÒ»¸ö8-bit×Ö·ûÓëCRC¼Ä´æÆ÷½øÐÐÒì»ò£¬²¢°Ñ½á¹û´æÈëCRC¼Ä´æÆ÷£»
-*£¨3£©CRC¼Ä´æÆ÷Ïò×óÒÆÒ»Î»£¬LSB²¹Áã£¬ÒÆ³ö²¢¼ì²éMSB(×î¸ßÓÐÐ§Î»)£»
-*£¨4£©Èç¹ûMSBÎª0£¬ÖØ¸´µÚÈý²½£»ÈôMSBÎª1£¬CRC¼Ä´æÆ÷ÓëPOLYNOMIAL(¡°³ýÊý£¨¶àÏîÊ½£©¡±)ÏàÒì»ò£»
-*£¨5£©ÖØ¸´µÚ3ÓëµÚ4²½Ö±µ½8´ÎÒÆÎ»È«²¿Íê³É¡£´ËÊ±Ò»¸ö8-bitÊý¾Ý´¦ÀíÍê±Ï£»
-*£¨6£©ÖØ¸´µÚ2ÖÁµÚ5²½Ö±µ½ËùÓÐÊý¾ÝÈ«²¿´¦ÀíÍê³É£»
-*£¨7£©×îÖÕCRC¼Ä´æÆ÷µÄÄÚÈÝÓëFINAL_XOR_VALUE(¡°½á¹ûÒì»òÖµ¡±)½øÐÐÒì»ò²Ù×÷ºó¼´ÎªCRCÖµ¡£
+* CRCå¸¸è§ç®—æ³•æè¿°(ç¼–ç å®žçŽ°)ï¼š
+*ï¼ˆ1ï¼‰è®¾ç½®CRCå¯„å­˜å™¨ï¼Œå¹¶ç»™å…¶èµ‹å€¼ä¸ºINITIAL_REMAINDER(â€œä½™æ•°åˆå§‹å€¼â€)ï¼›
+*ï¼ˆ2ï¼‰å°†æ•°æ®çš„ç¬¬ä¸€ä¸ª8-bitå­—ç¬¦ä¸ŽCRCå¯„å­˜å™¨è¿›è¡Œå¼‚æˆ–ï¼Œå¹¶æŠŠç»“æžœå­˜å…¥CRCå¯„å­˜å™¨ï¼›
+*ï¼ˆ3ï¼‰CRCå¯„å­˜å™¨å‘å·¦ç§»ä¸€ä½ï¼ŒLSBè¡¥é›¶ï¼Œç§»å‡ºå¹¶æ£€æŸ¥MSB(æœ€é«˜æœ‰æ•ˆä½)ï¼›
+*ï¼ˆ4ï¼‰å¦‚æžœMSBä¸º0ï¼Œé‡å¤ç¬¬ä¸‰æ­¥ï¼›è‹¥MSBä¸º1ï¼ŒCRCå¯„å­˜å™¨ä¸ŽPOLYNOMIAL(â€œé™¤æ•°ï¼ˆå¤šé¡¹å¼ï¼‰â€)ç›¸å¼‚æˆ–ï¼›
+*ï¼ˆ5ï¼‰é‡å¤ç¬¬3ä¸Žç¬¬4æ­¥ç›´åˆ°8æ¬¡ç§»ä½å…¨éƒ¨å®Œæˆã€‚æ­¤æ—¶ä¸€ä¸ª8-bitæ•°æ®å¤„ç†å®Œæ¯•ï¼›
+*ï¼ˆ6ï¼‰é‡å¤ç¬¬2è‡³ç¬¬5æ­¥ç›´åˆ°æ‰€æœ‰æ•°æ®å…¨éƒ¨å¤„ç†å®Œæˆï¼›
+*ï¼ˆ7ï¼‰æœ€ç»ˆCRCå¯„å­˜å™¨çš„å†…å®¹ä¸ŽFINAL_XOR_VALUE(â€œç»“æžœå¼‚æˆ–å€¼â€)è¿›è¡Œå¼‚æˆ–æ“ä½œåŽå³ä¸ºCRCå€¼ã€‚
  ----------------------------------------------------------
 	uint16_t crc16_CCITT(unsigned char *input, int num, uint16_t remainder)    
 	{    
@@ -52,7 +52,7 @@
 * Modify the typedef for an 8 or 32-bit CRC standard.  
 * 	---------------------------------------------
 * 	WIDTH : 16;
-*	TOPBIT : 0x8000£¬ÓÃÓÚÈ¡×î¸ßÎ»(bit);
+*	TOPBIT : 0x8000ï¼Œç”¨äºŽå–æœ€é«˜ä½(bit);
 */    
 
 #define WIDTH (8 * sizeof(width_t))    
@@ -67,7 +67,7 @@ static width_t crcTable[256];
 /**  
  * Initialize the CRC lookup table.  
  * This table is used by crcCompute() to make CRC computation faster.
- * ÓÅ»¯£º´ÓÐ§ÂÊÉÏ¿¼ÂÇ£¬¿ÉÒÔÏÈ¼ÆËã³ölookup table£¬´æÒÔ³£Á¿¡£
+ * ä¼˜åŒ–ï¼šä»Žæ•ˆçŽ‡ä¸Šè€ƒè™‘ï¼Œå¯ä»¥å…ˆè®¡ç®—å‡ºlookup tableï¼Œå­˜ä»¥å¸¸é‡ã€‚
  */    
 void _crcInit(void)    
 {    
@@ -99,8 +99,8 @@ void _crcInit(void)
     
 /**  
  * Compute the CRC checksum of a binary message block.  
- * 	@para message, ÓÃÀ´¼ÆËãµÄÊý¾Ý  
- * 	@para nBytes, Êý¾ÝµÄ³¤¶È  
+ * 	@para message, ç”¨æ¥è®¡ç®—çš„æ•°æ®  
+ * 	@para nBytes, æ•°æ®çš„é•¿åº¦  
  * 	@note This function expects that crcInit() has been called  
  *       first to initialize the CRC lookup table.  
  */  
@@ -110,22 +110,22 @@ void libCalcCRC(unsigned char * message, unsigned int nBytes, width_t *result)
     unsigned int offset;    
     unsigned char byte;    
 	
-	// ³õÊ¼»¯CRC³£Á¿±í
+	// åˆå§‹åŒ–CRCå¸¸é‡è¡¨
 	_crcInit();
 	
-	// ÓàÊý³õÊ¼»¯£º¸øCRC¼Ä´æÆ÷Ò»¸ö³õÊ¼Öµ.
+	// ä½™æ•°åˆå§‹åŒ–ï¼šç»™CRCå¯„å­˜å™¨ä¸€ä¸ªåˆå§‹å€¼.
     width_t remainder = INITIAL_REMAINDER;  
 	
     /* Divide the message by the polynomial, a byte at a time. */    
     for( offset = 0; offset < nBytes; offset++)    
     {   
-		// remainder ¸ß8bit(1Byte)ÓëmessageÒ»¸ö×Ö½ÚÔËËã£¬½á¹ûÓÃÀ´¼ìË÷crcTable
+		// remainder é«˜8bit(1Byte)ä¸Žmessageä¸€ä¸ªå­—èŠ‚è¿ç®—ï¼Œç»“æžœç”¨æ¥æ£€ç´¢crcTable
         byte = (remainder >> (WIDTH - 8)) ^ message[offset];   
-		// ¼ìË÷½á¹û Óë remainderÊ£ÏÂµÄÎ» ÔËËã¡£Ñ­»·´¦ÀíËùÓÐ×Ö½Ú. 
+		// æ£€ç´¢ç»“æžœ ä¸Ž remainderå‰©ä¸‹çš„ä½ è¿ç®—ã€‚å¾ªçŽ¯å¤„ç†æ‰€æœ‰å­—èŠ‚. 
         remainder = crcTable[byte] ^ (remainder << 8);    
     }    
     /* The final remainder is the CRC result. 
-	*  ×îÖÕCRC¼Ä´æÆ÷µÄÄÚÈÝÓë¡°½á¹ûÒì»òÖµ¡±½øÐÐÒì»ò²Ù×÷ºó¼´ÎªCRCÖµ
+	*  æœ€ç»ˆCRCå¯„å­˜å™¨çš„å†…å®¹ä¸Žâ€œç»“æžœå¼‚æˆ–å€¼â€è¿›è¡Œå¼‚æˆ–æ“ä½œåŽå³ä¸ºCRCå€¼
 	*/    
     *result = (remainder ^ FINAL_XOR_VALUE);    
 } /* crcCompute() */ 

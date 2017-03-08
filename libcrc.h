@@ -1,5 +1,5 @@
 /**
-* CRCĞ£Ñé£¨Ñ­»·ÈßÓàĞ£Ñé£©ÊÇÊı¾İÍ¨Ñ¶ÖĞ×î³£²ÉÓÃµÄĞ£Ñé·½Ê½.
+* CRCæ ¡éªŒï¼ˆå¾ªç¯å†—ä½™æ ¡éªŒï¼‰æ˜¯æ•°æ®é€šè®¯ä¸­æœ€å¸¸é‡‡ç”¨çš„æ ¡éªŒæ–¹å¼.
 * 
 */    
     
@@ -10,15 +10,15 @@
 extern "C" {
 #endif
        
-// unsigned short : CRC16»òCRC_CCITT±ê×¼.
+// unsigned short : CRC16æˆ–CRC_CCITTæ ‡å‡†.
 typedef unsigned short width_t;   
 
 /**  
 * The CRC parameters. Currently configured for CCITT.  
 * Simply modify these to switch to another CRC Standard.  
-* POLYNOMIAL : ³ıÊı£¨¶àÏîÊ½£©
-* INITIAL_REMAINDER : ÓàÊı³õÊ¼Öµ
-* FINAL_XOR_VALUE : ½á¹ûÒì»òÖµ
+* POLYNOMIAL : é™¤æ•°ï¼ˆå¤šé¡¹å¼ï¼‰
+* INITIAL_REMAINDER : ä½™æ•°åˆå§‹å€¼
+* FINAL_XOR_VALUE : ç»“æœå¼‚æˆ–å€¼
 */    
 #define POLYNOMIAL          0x1021    
 #define INITIAL_REMAINDER   0xFFFF    
@@ -32,8 +32,8 @@ void _crcInit(void);
     
 /**  
  * Compute the CRC checksum of a binary message block.  
- * @para message, ÓÃÀ´¼ÆËãµÄÊı¾İ  
- * @para nBytes, Êı¾İµÄ³¤¶È  
+ * @para message, ç”¨æ¥è®¡ç®—çš„æ•°æ®  
+ * @para nBytes, æ•°æ®çš„é•¿åº¦  
  * @note This function expects that crcInit() has been called  
  *       first to initialize the CRC lookup table.  
  */    
